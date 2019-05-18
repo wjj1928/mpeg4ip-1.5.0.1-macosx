@@ -71,7 +71,7 @@ int quicktime_write_hint_udta(quicktime_t *file, quicktime_hint_udta_t *hint_udt
 	quicktime_atom_t atom;
 
 	if (hint_udta->hnti.sdp.string == NULL) {
-		return;
+		return 0;
 	}
 
 	quicktime_atom_write_header(file, &atom, "udta");

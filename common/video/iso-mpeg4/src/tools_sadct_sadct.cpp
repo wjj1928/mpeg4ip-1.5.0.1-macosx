@@ -37,7 +37,7 @@ Revision History:
 #include "dct.hpp"
 #include <math.h>
 #if defined(__DEBUG_SADCT_) && !defined(NDEBUG)
-#include <iostream.h>
+#include <iostream>
 #endif
 #ifdef __MFC_
 #ifdef _DEBUG

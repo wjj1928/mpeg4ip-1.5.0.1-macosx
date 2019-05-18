@@ -872,7 +872,7 @@ Void CVideoObjectDecoder::decodePVOP_WithShape ()
 							&m_rctRefVOPY0
 							);
 						if (!(pmbmd->m_bSkip && !pmbmd->m_bMCSEL)) { // GMC
-							CoordI iXRefUV, iYRefUV;
+							CoordI iXRefUV=NULL, iYRefUV = NULL;
 							// INTERLACE //new changes
 							if(pmbmd->m_bFieldMV) {
 								CoordI iXRefUV1, iYRefUV1;

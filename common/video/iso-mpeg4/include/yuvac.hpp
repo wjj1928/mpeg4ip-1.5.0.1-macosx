@@ -80,7 +80,7 @@ public:
 	const CRct& whereBoundY () const {return m_rctBoundY;}
 	const CRct& whereBoundUV () const {return m_rctBoundUV;}
 
-	Bool valid () const {return this != 0;}
+	Bool valid () const {return true;}
 	const CU8Image* getPlane (PlaneType plnType) const;
 	const CU8Image* getPlaneA(Int iAuxComp) const;
 	AlphaUsage fAUsage () const {return m_fAUsage;}

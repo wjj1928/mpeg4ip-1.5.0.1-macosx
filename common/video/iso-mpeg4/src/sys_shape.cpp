@@ -1098,7 +1098,7 @@ CMotionVector CVideoObject::findShapeMVP (
 
 //	Modified for error resilient mode by Toshiba(1997-11-14)
 //		if (iMBX != 0 && validBlock (pmbmd - 1, gIndexOfCandBlk [1] [0]))
-		if (!bLeftBndry && validBlock (pmbmd, pmbmd - 1, gIndexOfCandBlk [1] [0]))
+		if (!bLeftBndry && validBlock (pmbmd, pmbmd - 1, gIndexOfCandBlk [1] [0])) {
 // GMC
 			if(!((pmbmd-1)->m_bMCSEL)){
 // ~GMC
@@ -1108,11 +1108,12 @@ CMotionVector CVideoObject::findShapeMVP (
 			}else{
 				return CMotionVector ();
 			}
+        }
 // ~GMC
 		if (iMBY != 0)   {
 //	Modified for error resilient mode by Toshiba(1997-11-14)
 //			if (validBlock (pmbmd - m_iNumMBX, gIndexOfCandBlk [1] [1]))
-			if (!bTopBndry && validBlock (pmbmd, pmbmd - m_iNumMBX, gIndexOfCandBlk [1] [1]))
+			if (!bTopBndry && validBlock (pmbmd, pmbmd - m_iNumMBX, gIndexOfCandBlk [1] [1])) { 
 // GMC
 				if(!((pmbmd-m_iNumMBX)->m_bMCSEL)){
 // ~GMC
@@ -1122,10 +1123,11 @@ CMotionVector CVideoObject::findShapeMVP (
 				}else{
 					return CMotionVector ();
 				}
+            }
 // ~GMC
 //	Modified for error resilient mode by Toshiba(1997-11-14)
 //			if (iMBX < m_iNumMBX - 1 && validBlock (pmbmd - m_iNumMBX + 1, gIndexOfCandBlk [1] [2]))
-			if (!bRightBndry && validBlock (pmbmd, pmbmd - m_iNumMBX + 1, gIndexOfCandBlk [1] [2]))
+			if (!bRightBndry && validBlock (pmbmd, pmbmd - m_iNumMBX + 1, gIndexOfCandBlk [1] [2])) {
 // GMC
 				if(!((pmbmd-m_iNumMBX + 1)->m_bMCSEL)){
 // ~GMC
@@ -1135,6 +1137,7 @@ CMotionVector CVideoObject::findShapeMVP (
 				}else{
 					return CMotionVector ();
 				}
+            }
 // ~GMC
 		}
 	}

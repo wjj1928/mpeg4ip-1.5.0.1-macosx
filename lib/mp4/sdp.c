@@ -75,7 +75,7 @@ int quicktime_write_sdp(quicktime_t *file, quicktime_sdp_t *sdp)
         quicktime_atom_t atom;
 
         if (sdp->string == NULL) {
-                return;
+                return 0;
         }
 
         quicktime_atom_write_header(file, &atom, "sdp ");

@@ -45,8 +45,8 @@ Revision History:
 #include <stdlib.h>
 #include <stdio.h>
 #include <math.h>
-//#include <fstream.h>
-//#include <iostream.h>
+//#include <fstream>
+//#include <iostream>
 //#include "mpeg4ip.h"
 #include "typeapi.h"
 #include "codehead.h"

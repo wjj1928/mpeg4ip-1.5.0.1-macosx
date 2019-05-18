@@ -46,6 +46,7 @@
 #include "gettimeofday.h"
 #include "debug.h"
 
+__attribute__((format(printf, 1, 2)))
 void _dprintf(const char *format, ...)
 {
 #ifdef DEBUG

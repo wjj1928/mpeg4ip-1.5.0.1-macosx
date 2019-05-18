@@ -159,7 +159,8 @@ Void CVTCEncoder::mzte_output_bit(ac_encoder *ace,Int bit)
 		if (!(ace->bitstream))
 			errorHandler("Failure to allocate space for array Bitstream " \
                             "in ac_encoder structure");
-		switch (flag=(ace->bitstreamLength>=MAX_BUFFER)) {
+        flag = (ace->bitstreamLength >= MAX_BUFFER)?1:0;
+		switch (flag) {
 			case 1:
 				write_to_bitstream(ace->bitstream,MAX_BUFFER<<3);
 				ace->bitstreamLength=0;

@@ -37,7 +37,7 @@ Revision History:
 *************************************************************************/
 
 #include "typeapi.h"
-#include <iostream.h>
+#include <iostream>
 
 #ifdef __MFC_
 #ifdef _DEBUG
@@ -48,6 +48,8 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW				   
 #endif // __MFC_
 
+using namespace std;
+Void overlayMB (CIntImage* piiBig, const CIntImage* piiSmall, const CIntImage* piiMskSmall);
 
 CVOPIntYUVBA::~CVOPIntYUVBA ()
 {

@@ -233,7 +233,7 @@ Void CVideoObject::decideFieldTransparencyStatus (
                 else    pmbmd -> m_rgFieldTranspStatus [ix] = PARTIAL;
         }
         
-        delete piNonTransPixels;
+        delete[] piNonTransPixels;
 }
 
 Void CVideoObject::fieldBasedDownSampleBY (

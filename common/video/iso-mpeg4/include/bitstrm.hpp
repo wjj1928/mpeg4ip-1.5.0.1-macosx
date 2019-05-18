@@ -45,8 +45,12 @@ Revision History:
 #ifndef _BITSTREAM_HPP_
 #define _BITSTREAM_HPP_
 #include "inbits.h"
+#ifdef __cplus
 #include <istream.h>
 #include <ostream.h>
+#else
+#include <iostream>
+#endif
 
 class CIOBitStream
 {

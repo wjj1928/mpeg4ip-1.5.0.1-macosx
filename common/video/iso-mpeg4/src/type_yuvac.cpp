@@ -39,7 +39,7 @@ Revision History:
 
 *************************************************************************/
 
-#include <iostream.h>
+#include <iostream>
 #include "typeapi.h"
 
 #ifdef __MFC_
@@ -50,7 +50,7 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 
 #define new DEBUG_NEW				   
 #endif // __MFC_
-
+using namespace std;
 CVOPU8YUVBA::~CVOPU8YUVBA ()
 {
 	delete m_puciY;

@@ -65,12 +65,12 @@ public:
 	CFloatImage (const Char* vdlFileName); // read from a VM file.
 
 	// Attributes
-	Bool valid () const {return this != 0;}
+	Bool valid () const {return true;}
 	const CRct& where () const {return m_rc;}
 	CRct boundingBox (const PixelF pxlfOutsideColor = (PixelF) transpValue) const;
 	PixelF pixel (CoordI x, CoordI y) const {return m_ppxlf [m_rc.offset (x, y)];}
 	PixelF pixel (const CSite& st) const {return pixel (st.x, st.y);}
-	const PixelF* pixels () const {return (this == NULL) ? NULL : m_ppxlf;} // return pointer
+	const PixelF* pixels () const {return m_ppxlf;} // return pointer
 	const PixelF* pixels (CoordI x, CoordI y) const {return m_ppxlf + m_rc.offset (x, y);}
 	const PixelF* pixels (const CSite& st) const {return pixels (st.x, st.y);}
 

@@ -132,24 +132,26 @@ Void CVideoObjectDecoder::motionCompAndAddErrorMB_BVOP (
       else {
         const CMotionVector* pmv8 = pmvForward;
         for (iBlk = 0; iBlk < 4; iBlk++)	{
-          pmv8++;
-          if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
-            if (m_volmd.bQuarterSample) // Quarter sample
-              motionCompQuarterSample (m_ppxlcPredMBY + rgiBlkOffsetPixel [iBlk], 
-                                       m_pvopcRefQ0->pixelsY (), BLOCK_SIZE,
-                                       (x + rgiBlkOffsetX [iBlk]) * 4 + pmv8->trueMVHalfPel ().x, 
-                                       (y + rgiBlkOffsetY [iBlk]) * 4 + pmv8->trueMVHalfPel ().y,
-                                       m_vopmd.iRoundingControl, prctMVLimitForward);
-            else
-              motionComp (
-                          m_ppxlcPredMBY + rgiBlkOffsetPixel [iBlk], 
-                          m_pvopcRefQ0->pixelsY (),
-                          BLOCK_SIZE, 
-                          (x + rgiBlkOffsetX [iBlk]) * 2 + pmv8->trueMVHalfPel ().x, 
-                          (y + rgiBlkOffsetY [iBlk]) * 2 + pmv8->trueMVHalfPel ().y,
-                          m_vopmd.iRoundingControl,
-                          prctMVLimitForward
-                          );
+            pmv8++;
+            if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
+                if (m_volmd.bQuarterSample) { // Quarter sample 
+                    motionCompQuarterSample (m_ppxlcPredMBY + rgiBlkOffsetPixel [iBlk], 
+                            m_pvopcRefQ0->pixelsY (), BLOCK_SIZE,
+                            (x + rgiBlkOffsetX [iBlk]) * 4 + pmv8->trueMVHalfPel ().x, 
+                            (y + rgiBlkOffsetY [iBlk]) * 4 + pmv8->trueMVHalfPel ().y,
+                            m_vopmd.iRoundingControl, prctMVLimitForward);
+                } else {
+                    motionComp (
+                            m_ppxlcPredMBY + rgiBlkOffsetPixel [iBlk], 
+                            m_pvopcRefQ0->pixelsY (),
+                            BLOCK_SIZE, 
+                            (x + rgiBlkOffsetX [iBlk]) * 2 + pmv8->trueMVHalfPel ().x, 
+                            (y + rgiBlkOffsetY [iBlk]) * 2 + pmv8->trueMVHalfPel ().y,
+                            m_vopmd.iRoundingControl,
+                            prctMVLimitForward
+                            );
+                }
+            }
         }
       }
       CoordI xRefUVForward, yRefUVForward;
@@ -176,26 +178,28 @@ Void CVideoObjectDecoder::motionCompAndAddErrorMB_BVOP (
       else {
         const CMotionVector* pmv8 = pmvBackward;
         for (iBlk = 0; iBlk < 4; iBlk++)	{
-          pmv8++;
-          if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
-            if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
-              if (m_volmd.bQuarterSample) // Quarter sample
-                motionCompQuarterSample (m_ppxlcPredMBBackY + rgiBlkOffsetPixel [iBlk],
-                                         m_pvopcRefQ1->pixelsY (), BLOCK_SIZE, 
-                                         (x + rgiBlkOffsetX [iBlk]) * 4 + pmv8->trueMVHalfPel ().x, 
-                                         (y + rgiBlkOffsetY [iBlk]) * 4 + pmv8->trueMVHalfPel ().y,
-                                         m_vopmd.iRoundingControl,
-                                         prctMVLimitBackward);
-              else
-                motionComp (
-                            m_ppxlcPredMBBackY + rgiBlkOffsetPixel [iBlk], 
-                            m_pvopcRefQ1->pixelsY (),
-                            BLOCK_SIZE, 
-                            (x + rgiBlkOffsetX [iBlk]) * 2 + pmv8->trueMVHalfPel ().x, 
-                            (y + rgiBlkOffsetY [iBlk]) * 2 + pmv8->trueMVHalfPel ().y,
-                            m_vopmd.iRoundingControl,
-                            prctMVLimitBackward
-                            );
+            pmv8++;
+            if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
+                if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
+                    if (m_volmd.bQuarterSample) // Quarter sample
+                        motionCompQuarterSample (m_ppxlcPredMBBackY + rgiBlkOffsetPixel [iBlk],
+                                m_pvopcRefQ1->pixelsY (), BLOCK_SIZE, 
+                                (x + rgiBlkOffsetX [iBlk]) * 4 + pmv8->trueMVHalfPel ().x, 
+                                (y + rgiBlkOffsetY [iBlk]) * 4 + pmv8->trueMVHalfPel ().y,
+                                m_vopmd.iRoundingControl,
+                                prctMVLimitBackward);
+                    else
+                        motionComp (
+                                m_ppxlcPredMBBackY + rgiBlkOffsetPixel [iBlk], 
+                                m_pvopcRefQ1->pixelsY (),
+                                BLOCK_SIZE, 
+                                (x + rgiBlkOffsetX [iBlk]) * 2 + pmv8->trueMVHalfPel ().x, 
+                                (y + rgiBlkOffsetY [iBlk]) * 2 + pmv8->trueMVHalfPel ().y,
+                                m_vopmd.iRoundingControl,
+                                prctMVLimitBackward
+                                );
+                }
+            }
         }
       }
       CoordI xRefUVBackward, yRefUVBackward;
@@ -255,30 +259,32 @@ Void CVideoObjectDecoder::motionCompAlphaMB_BVOP(
     if (pmbmd->m_mbType == DIRECT && !pmbmd -> m_bFieldMV) { // added by mwi, changed for GS+IN 990219 mwi
       const CMotionVector* pmv8 = pmvForward;
       for (iBlk = 0; iBlk < 4; iBlk++)	{
-        pmv8++;
-        if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
-          if (m_volmd.bQuarterSample) // Quarter sample
-            motionCompQuarterSample (
-                                     m_ppxlcPredMBA[iAuxComp] + rgiBlkOffsetPixel [iBlk], 
-                                     m_pvopcRefQ0->pixelsA (iAuxComp), BLOCK_SIZE, 
-                                     (x + rgiBlkOffsetX [iBlk]) * 4 + pmv8->trueMVHalfPel ().x, 
-                                     (y + rgiBlkOffsetY [iBlk]) * 4 + pmv8->trueMVHalfPel ().y,
-                                     m_vopmd.iRoundingControl, prctMVLimitForward);
-          else
-            motionComp (
-                        m_ppxlcPredMBA[iAuxComp] + rgiBlkOffsetPixel [iBlk], 
-                        m_pvopcRefQ0->pixelsA (iAuxComp),
-                        BLOCK_SIZE, 
-                        (x + rgiBlkOffsetX [iBlk]) * 2 + pmv8->trueMVHalfPel ().x, 
-                        (y + rgiBlkOffsetY [iBlk]) * 2 + pmv8->trueMVHalfPel ().y,
-                        0,
-                        prctMVLimitForward
-                        );
+          pmv8++;
+          if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
+              if (m_volmd.bQuarterSample)  // Quarter sample
+                  motionCompQuarterSample (
+                          m_ppxlcPredMBA[iAuxComp] + rgiBlkOffsetPixel [iBlk], 
+                          m_pvopcRefQ0->pixelsA (iAuxComp), BLOCK_SIZE, 
+                          (x + rgiBlkOffsetX [iBlk]) * 4 + pmv8->trueMVHalfPel ().x, 
+                          (y + rgiBlkOffsetY [iBlk]) * 4 + pmv8->trueMVHalfPel ().y,
+                          m_vopmd.iRoundingControl, prctMVLimitForward);
+              else
+                  motionComp (
+                          m_ppxlcPredMBA[iAuxComp] + rgiBlkOffsetPixel [iBlk], 
+                          m_pvopcRefQ0->pixelsA (iAuxComp),
+                          BLOCK_SIZE, 
+                          (x + rgiBlkOffsetX [iBlk]) * 2 + pmv8->trueMVHalfPel ().x, 
+                          (y + rgiBlkOffsetY [iBlk]) * 2 + pmv8->trueMVHalfPel ().y,
+                          0,
+                          prctMVLimitForward
+                          );
+          }
+
       }
       pmv8 = pmvBackward;
       for (iBlk = 0; iBlk < 4; iBlk++)	{
         pmv8++;
-        if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
+        if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
           if (m_volmd.bQuarterSample) // Quarter sample
             motionCompQuarterSample (
                                      m_ppxlcPredMBBackA[iAuxComp] + rgiBlkOffsetPixel [iBlk], 
@@ -296,6 +302,7 @@ Void CVideoObjectDecoder::motionCompAlphaMB_BVOP(
                         0,
                         prctMVLimitBackward
                         );
+        }
       }
 
     } // ~added by mwi
@@ -359,7 +366,7 @@ Void CVideoObjectDecoder::motionCompAlphaMB_BVOP(
         const CMotionVector* pmv8 = pmvForward;
         for (iBlk = 0; iBlk < 4; iBlk++)	{
           pmv8++;
-          if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
+          if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
             if (m_volmd.bQuarterSample) // Quarter sample
               motionCompQuarterSample (
                                        m_ppxlcPredMBA[iAuxComp] + rgiBlkOffsetPixel [iBlk], 
@@ -377,6 +384,7 @@ Void CVideoObjectDecoder::motionCompAlphaMB_BVOP(
                           0,
                           prctMVLimitForward
                           );
+          }
         }
       }
       if (!pmbmd->m_bhas4MVBackward && !pmbmd -> m_bFieldMV)	//12.22.98 
@@ -431,7 +439,7 @@ Void CVideoObjectDecoder::motionCompAlphaMB_BVOP(
         const CMotionVector* pmv8 = pmvBackward;
         for (iBlk = 0; iBlk < 4; iBlk++)	{
           pmv8++;
-          if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
+          if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
             if (m_volmd.bQuarterSample) // Quarter sample
               motionCompQuarterSample (
                                        m_ppxlcPredMBBackA[iAuxComp] + rgiBlkOffsetPixel [iBlk], 
@@ -449,6 +457,7 @@ Void CVideoObjectDecoder::motionCompAlphaMB_BVOP(
                           0,
                           prctMVLimitBackward
                           );
+          } 
         }
       }
     }
@@ -613,7 +622,7 @@ Void CVideoObjectDecoder::motionCompSkipMB_BVOP (
 			const CMotionVector* pmv8 = pmvForward;
 			for (iBlk = 0; iBlk < 4; iBlk++)	{
               pmv8++;
-              if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
+              if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
                 if (m_volmd.bQuarterSample) // Quarter sample
                   motionCompQuarterSample (m_ppxlcPredMBY + rgiBlkOffsetPixel [iBlk],
                                            m_pvopcRefQ0->pixelsY (), BLOCK_SIZE, 
@@ -630,6 +639,7 @@ Void CVideoObjectDecoder::motionCompSkipMB_BVOP (
                               m_vopmd.iRoundingControl,
                               prctMVLimitForward
                               );
+              }
 			}
 		}
 		CoordI xRefUVForward, yRefUVForward;
@@ -657,7 +667,7 @@ Void CVideoObjectDecoder::motionCompSkipMB_BVOP (
 			const CMotionVector* pmv8 = pmvBackward;
 			for (iBlk = 0; iBlk < 4; iBlk++)	{
 				pmv8++;
-				if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL)
+				if (pmbmd->m_rgTranspStatus [iBlk + 1] != ALL) {
                   if (m_volmd.bQuarterSample) // Quarter sample
                     motionCompQuarterSample (m_ppxlcPredMBBackY + rgiBlkOffsetPixel [iBlk], 
                                              m_pvopcRefQ1->pixelsY (),BLOCK_SIZE, 
@@ -674,6 +684,7 @@ Void CVideoObjectDecoder::motionCompSkipMB_BVOP (
                                 m_vopmd.iRoundingControl,
                                 prctMVLimitBackward
                                 );
+                }
 			}
 		}
 		CoordI xRefUVBackward, yRefUVBackward;

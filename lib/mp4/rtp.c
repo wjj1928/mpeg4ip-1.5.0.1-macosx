@@ -76,7 +76,7 @@ int quicktime_write_rtp(quicktime_t *file, quicktime_rtp_t *rtp)
         quicktime_atom_t atom;
 
         if (rtp->string == NULL) {
-                return;
+                return 0;
         }
 
         quicktime_atom_write_header(file, &atom, "rtp ");

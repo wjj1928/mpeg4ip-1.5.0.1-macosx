@@ -4,11 +4,14 @@
 #
 # This shell looks for version, then sees if we're 0.98.19 or greater
 #
+echo wjjsun1 $1
 VER=`echo $1 | tr '[a-z]' '[A-Z]'`
+echo wjjsun2 $VER
 until test $VER = "VERSION"; 
   do
    shift
    VER=`echo $1 | tr '[a-z]' '[A-Z]'`
+   echo wjjsun2 $VER
   done
 
 # check for version tag

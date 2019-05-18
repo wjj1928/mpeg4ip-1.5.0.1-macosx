@@ -438,8 +438,8 @@ Bool CNewPred::CopyNPtoVM(Int iSlice_no, PixelC* RefpointY, PixelC* RefpointU, P
 		if (m_pNewPredControl->ref[iSlice_no] == 0) {
 			break;
 		}
-		if( (m_pNewPredControl->NPRefBuf[iSlice_no][i]->vop_id 
-			== m_pNewPredControl->ref[iSlice_no]) )
+		if(m_pNewPredControl->NPRefBuf[iSlice_no][i]->vop_id
+			== m_pNewPredControl->ref[iSlice_no])
 		{
 			for (j = 0; j < hh * MB_SIZE; j++) {
 				dist = st*MB_SIZE + j* m_rctNPFrameY.width;
@@ -492,8 +492,8 @@ Bool CNewPred::CopyNPtoPrev(Int iSlice_no, PixelC* RefpointY, PixelC* RefpointU,
 		}
 	}
 	for (Int i=0; i < (Who_Am_I() == NP_ENCODER?m_iNumBuffEnc:m_iNumBuffDec); i++) {
-		if( (m_pNewPredControl->NPRefBuf[iSlice_no][i]->vop_id 
-			== m_pNewPredControl->ref[iSlice_no]) )
+		if(m_pNewPredControl->NPRefBuf[iSlice_no][i]->vop_id 
+			== m_pNewPredControl->ref[iSlice_no])
 		{
 			for (j = 0; j < hh * MB_SIZE; j++) {
 				dist = st*MB_SIZE + j* m_rctNPFrameY.width;

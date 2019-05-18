@@ -122,7 +122,7 @@ Void CU8Image::copyConstruct (const CU8Image& uci, const CRct& rct)
 
 Void CU8Image::swap (CU8Image& uci) 
 {
-	assert (this && &uci);
+	assert ( &uci);
 	CRct rcT = uci.m_rc; 
 	uci.m_rc = m_rc; 
 	m_rc = rcT; 
@@ -1602,7 +1602,8 @@ Double CU8Image::snr (const CU8Image& uciCompare, const CU8Image& uciMsk) const
 {
 	CU8Image* puciMskOp = NULL;
 	Double msError = 0;
-	if (&uciMsk == NULL) {
+    char* p = NULL;
+	if (p != NULL) {
 		puciMskOp = new CU8Image (where (), (PixelC) opaqueValue);		
 		msError = mse (uciCompare, *puciMskOp);
 		delete puciMskOp;

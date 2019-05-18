@@ -45,17 +45,17 @@ Revision History:
 #include <stdlib.h>
 #include <string.h>
 //#include <fstream.h>
-//#include <iostream.h>
+//#include <iostream>
 #include "typeapi.h"
 #include "entropy.hpp"
 #include "huffman.hpp"
-//#include "iostream.h"
-//#include "fstream.h"
+//#include "iostream"
+//#include "fstream"
 #include "math.h"
 #include "bitstrm.hpp"
 
 #include "vlc.hpp"
-#include <iostream.h>
+#include <iostream>
 #ifdef __MFC_
 #ifdef _DEBUG
 #undef THIS_FILE
@@ -192,7 +192,7 @@ void CHuffmanTree::writeOneTableEntry(ostream &stream, Int entryNo,
         stream<<(Int)pCodeArray[lCodeNo];
     };
     stream<<endl;
-    delete pCodeArray;
+    delete[] pCodeArray;
 }
 
 Void CHuffmanTree::writeTable (ostream &stream)
@@ -443,7 +443,7 @@ void CHuffmanDecoder::loadTable(istream &huffmanTable,Bool bIncompleteTree)
         assert((m_pTree[i].is0Valid())||bIncompleteTree);
         assert((m_pTree[i].is1Valid())||bIncompleteTree);
     };
-    delete pCode;
+    delete[] pCode;
 }
 
 void CHuffmanDecoder::loadTable(VlcTable *pVlc,Bool bIncompleteTree)
@@ -655,7 +655,7 @@ Void CHuffmanEncoder::loadTable(istream &huffmanTable)
             }                                                                           
         }
     }
-    delete pCode;
+    delete[] pCode;
 }
 
 Void CHuffmanEncoder::loadTable(VlcTable *pVlc)

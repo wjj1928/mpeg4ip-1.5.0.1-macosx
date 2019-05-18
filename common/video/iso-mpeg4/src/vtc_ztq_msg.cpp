@@ -83,12 +83,13 @@ FILE *sfp;
 /* Filter variable for user messages */
 Int quiet=QUIET_DETAIL;
 
+__attribute__((format(printf, 2, 3)))
 Void CVTCCommon::noteStat(Char *s, ...)
 {
   va_list ap;
 
   va_start(ap, s);
-  vfprintf(sfp, s, ap);
+  vfprintf(sfp, (char*)s, ap);
   fflush(sfp);
   va_end(ap);
 }
@@ -101,13 +102,14 @@ Void CVTCCommon::noteDebug(Char *s, ...)
   {
 
     va_start(ap, s);
-    vfprintf(ofp, s, ap);
+    //debugmme vfprintf(ofp, s, ap);
     fprintf(ofp, "\n");
     fflush(ofp);
     va_end(ap);
   }
 }
 
+__attribute__((format(printf, 2, 3)))
 Void CVTCCommon::noteDetail(Char *s, ...)
 {
   va_list ap;
@@ -123,6 +125,7 @@ Void CVTCCommon::noteDetail(Char *s, ...)
   }
 }
 
+__attribute__((format(printf, 2, 3)))
 Void CVTCCommon::noteProgress(Char *s, ...)
 {
   va_list ap;
@@ -137,7 +140,7 @@ Void CVTCCommon::noteProgress(Char *s, ...)
   }
 }
 
-
+__attribute__((format(printf, 2, 3)))
 Void CVTCCommon::noteProgressNoNL(Char *s, ...)
 {
   va_list ap;
@@ -151,7 +154,7 @@ Void CVTCCommon::noteProgressNoNL(Char *s, ...)
   }
 }
 
-
+__attribute__((format(printf, 2, 3)))
 Void CVTCCommon::noteWarning(Char *s, ...)
 {
   va_list ap;
@@ -167,7 +170,7 @@ Void CVTCCommon::noteWarning(Char *s, ...)
   }
 }
 
-
+__attribute__((format(printf, 2, 3)))
 Void CVTCCommon::noteError(Char *s, ...)
 {
   va_list ap;
@@ -183,6 +186,7 @@ Void CVTCCommon::noteError(Char *s, ...)
   }
 }
 
+__attribute__((format(printf, 2, 3)))
 Void CVTCCommon::noteErrorNoPre(Char *s, ...)
 {
   va_list ap;

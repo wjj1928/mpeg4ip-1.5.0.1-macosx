@@ -52,6 +52,7 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 #define new DEBUG_NEW				   
 #endif // __MFC_
 
+Double dist (Double x0, Double y0, Double x1, Double y1);
 //	handy functions
 Int nint (Double x)  // returns nearest integer to x, analog of FORTRAN NINT
 {

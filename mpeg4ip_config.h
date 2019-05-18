@@ -5,37 +5,37 @@
 /* #undef ARCH_PPC */
 
 /* have intel processor */
-#define ARCH_X86 1
+/* #undef ARCH_X86 */
 
 /* have alsa enabled for mp4live */
 /* #undef HAVE_ALSA */
 
 /* Define to 1 if `time_base' is member of `AVCodecContext'. */
-#define HAVE_AVCODECCONTEXT_TIME_BASE 1
+/* #undef HAVE_AVCODECCONTEXT_TIME_BASE */
 
 /* Define to 1 if the system has the type `AVRational'. */
-#define HAVE_AVRATIONAL 1
+/* #undef HAVE_AVRATIONAL */
 
 /* Define to 1 if you have the <byteswap.h> header file. */
-#define HAVE_BYTESWAP_H 1
+/* #undef HAVE_BYTESWAP_H */
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #define HAVE_DLFCN_H 1
 
 /* enable faac for mp4live */
-#define HAVE_FAAC 1
+/* #undef HAVE_FAAC */
 
 /* Define to 1 if you have the <fcntl.h> header file. */
 #define HAVE_FCNTL_H 1
 
 /* enable ffmpeg for mp4live */
-#define HAVE_FFMPEG 1
+/* #undef HAVE_FFMPEG */
 
 /* defined if ffmpeg is installed */
-#define HAVE_FFMPEG_INSTALLED 1
+/* #undef HAVE_FFMPEG_INSTALLED */
 
 /* Define to 1 if `__pos' is member of `fpos_t'. */
-#define HAVE_FPOS_T___POS 1
+/* #undef HAVE_FPOS_T___POS */
 
 /* Define to 1 if you have the `getopt' function. */
 #define HAVE_GETOPT 1
@@ -56,10 +56,10 @@
 #define HAVE_GLIB_H 1
 
 /* Have GTK on system */
-#define HAVE_GTK 1
+/* #undef HAVE_GTK */
 
 /* Have GTK 2.0 on system */
-#define HAVE_GTK_2_0 1
+/* #undef HAVE_GTK_2_0 */
 
 /* have id3/tag.h */
 /* #undef HAVE_ID3_TAG_H */
@@ -80,7 +80,7 @@
 /* #undef HAVE_IPv6 */
 
 /* enable lame for mp4live */
-#define HAVE_LAME 1
+/* #undef HAVE_LAME */
 
 /* Define to 1 if you have the `asound' library (-lasound). */
 /* #undef HAVE_LIBASOUND */
@@ -89,22 +89,22 @@
 /* #undef HAVE_LIBGNUGETOPT */
 
 /* have libmpeg2 decoder library */
-#define HAVE_LIBMPEG2 1
+/* #undef HAVE_LIBMPEG2 */
 
 /* Define to 1 if you have the `socket' library (-lsocket). */
 /* #undef HAVE_LIBSOCKET */
 
 /* Define to 1 if you have the <linux/cdrom.h> header file. */
-#define HAVE_LINUX_CDROM_H 1
+/* #undef HAVE_LINUX_CDROM_H */
 
 /* have mac */
-/* #undef HAVE_MACOSX */
+#define HAVE_MACOSX 1
 
 /* Define to 1 if you have the <memory.h> header file. */
 #define HAVE_MEMORY_H 1
 
 /* mp4live can be used */
-#define HAVE_MP4LIVE 1
+/* #undef HAVE_MP4LIVE */
 
 /* Define to 1 if you have the `poll' function. */
 #define HAVE_POLL 1
@@ -120,7 +120,7 @@
 #define HAVE_SOCKLEN_T 1
 
 /* enable use of srtp library */
-#define HAVE_SRTP 1
+/* #undef HAVE_SRTP */
 
 /* Define to 1 if you have the <stdint.h> header file. */
 #define HAVE_STDINT_H 1
@@ -162,7 +162,7 @@
 #define HAVE_UNISTD_H 1
 
 /* enable x264 for mp4live */
-#define HAVE_X264 1
+/* #undef HAVE_X264 */
 
 /* have xvid.h with 1.0 API */
 #define HAVE_XVID10 1
@@ -189,7 +189,7 @@
 #define SIZEOF_BOOL 1
 
 /* The size of a `long', as computed by sizeof. */
-#define SIZEOF_LONG 4
+#define SIZEOF_LONG 8
 
 /* Define to 1 if you have the ANSI C header files. */
 #define STDC_HEADERS 1
@@ -202,7 +202,7 @@
 /* #undef WORDS_BIGENDIAN */
 
 /* Define to 1 if the X Window System is missing or not being used. */
-/* #undef X_DISPLAY_MISSING */
+#define X_DISPLAY_MISSING 1
 
 /* Define to empty if `const' does not conform to ANSI C. */
 /* #undef const */

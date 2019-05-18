@@ -1191,7 +1191,7 @@ Void dumpNonCodedFrame(FILE* pfYUV, FILE* pfSeg, FILE **ppfAux, Int iAuxCompCoun
 	for(i=0; i<iH; i++) // UV
 		fwrite(ppxlcPix, sizeof(PixelC), iW>>1, pfYUV);
 
-	delete ppxlcPix;
+	delete[] ppxlcPix;
 }
 
 Int CVideoObject::getAuxCompCount(Int vol_shape_extension)

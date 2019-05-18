@@ -66,12 +66,12 @@ public:
 	CIntImage (const Char* vdlFileName); // read from a VM file.
 
 	// Attributes
-	Bool valid () const {return this != 0;}
+	Bool valid () const {return true;}
 	const CRct& where () const {return m_rc;}
 	CRct boundingBox (const PixelI pxliOutsideColor = (PixelI) transpValue) const;
 	PixelI pixel (CoordI x, CoordI y) const {return m_ppxli [m_rc.offset (x, y)];}
 	PixelI pixel (const CSite& st) const {return pixel (st.x, st.y);}
-	const PixelI* pixels () const {return (this == NULL) ? NULL : m_ppxli;} // return pointer
+	const PixelI* pixels () const {return m_ppxli;} // return pointer
 	const PixelI* pixels (CoordI x, CoordI y) const {return m_ppxli + m_rc.offset (x, y);}
 	const PixelI* pixels (const CSite& st) const {return pixels (st.x, st.y);}
 

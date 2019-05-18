@@ -104,7 +104,7 @@ Void CFloatImage::copyConstruct (const CFloatImage& fi, const CRct& rct)
 
 Void CFloatImage::swap (CFloatImage& fi) 
 {
-	assert (this && &fi);
+	assert ( &fi);
 	CRct rcT = fi.m_rc; 
 	fi.m_rc = m_rc; 
 	m_rc = rcT; 
@@ -1411,7 +1411,7 @@ Double CFloatImage::snr (const CFloatImage& fiCompare, const CFloatImage& fiMsk)
 {
 	CFloatImage* pfiMskOp = NULL;
 	Double msError = 0;
-	if (&fiMsk == NULL) {
+	if (false) {
 		pfiMskOp = new CFloatImage (where (), (PixelF) opaqueValue);		
 		msError = mse (fiCompare, *pfiMskOp);
 		delete pfiMskOp;

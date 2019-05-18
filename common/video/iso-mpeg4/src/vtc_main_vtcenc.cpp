@@ -57,7 +57,7 @@
 #include <math.h>
 #include <assert.h>
 // begin: added by Sharp (99/2/16)
-#include <iostream.h>
+#include <iostream>
 #include <sys/stat.h>
 // end: added by Sharp (99/2/16)
 

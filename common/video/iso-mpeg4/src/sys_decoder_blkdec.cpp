@@ -185,9 +185,9 @@ Void CVideoObjectDecoder::decodeIntraBlockTexture (PixelC* rgpxlcBlkDst,
 	}
 	else 
 	{  
-	
-		if (iBlk<=V_BLOCK && pmbmd->m_bCodeDcAsAc==FALSE
-		|| iBlk>=A_BLOCK1 && pmbmd->m_bCodeDcAsAcAlpha==FALSE) {
+//debugme	
+		if ((iBlk<=V_BLOCK && pmbmd->m_bCodeDcAsAc==FALSE)
+		|| ((iBlk>=A_BLOCK1) && pmbmd->m_bCodeDcAsAcAlpha==FALSE)) {
 		rgiCoefQ [0] = decodeIntraDCmpeg (iBlk <= Y_BLOCK4 || iBlk >=A_BLOCK1);
 		iCoefStart++;
 		}
@@ -201,8 +201,8 @@ Void CVideoObjectDecoder::decodeIntraBlockTexture (PixelC* rgpxlcBlkDst,
 		Int* rgiZigzag = grgiStandardZigzag;
 	    if (m_vopmd.bAlternateScan && iBlk<=V_BLOCK) // 12.22.98 Changes
             rgiZigzag = grgiVerticalZigzag;
-        else if (iBlk<=V_BLOCK && pmbmd->m_bACPrediction
-			|| iBlk >= A_BLOCK1 && pmbmd->m_pbACPredictionAlpha[(iBlk-7)/4])
+        else if ((iBlk<=V_BLOCK && pmbmd->m_bACPrediction)
+			|| (iBlk >= A_BLOCK1 && pmbmd->m_pbACPredictionAlpha[(iBlk-7)/4]))
 			rgiZigzag = (pmbmd->m_preddir [iBlk - 1] == HORIZONTAL) ? grgiVerticalZigzag : grgiHorizontalZigzag;
  		//	Added for data partitioning mode By Toshiba(1998-1-16:DP+RVLC)
 		// HHI Schueuer
@@ -627,8 +627,8 @@ Void CVideoObjectDecoder::inverseDCACPred (const CMBMode* pmbmd, Int iBlkIdx,
 			rgiCoefQ [0] += divroundnearest(blkmPred [0], iDcScaler);
 			// clip range after inverse pred
 			rgiCoefQ [0] = rgiCoefQ[0] < -2048 ? -2048 : (rgiCoefQ[0] > 2047 ? 2047 : rgiCoefQ[0]);
-			if (iBlkIdx<(A_BLOCK1 - 1) && pmbmd->m_bACPrediction
-				|| iBlkIdx>=(A_BLOCK1 - 1) && pmbmd->m_pbACPredictionAlpha[(iBlkIdx-7)/4])	{
+			if ((iBlkIdx<(A_BLOCK1 - 1) && pmbmd->m_bACPrediction)
+				|| (iBlkIdx>=(A_BLOCK1 - 1) && pmbmd->m_pbACPredictionAlpha[(iBlkIdx-7)/4]))	{
 				Int i, j;
 				//do AC prediction
 				if (pmbmd->m_preddir [iBlkIdx] == HORIZONTAL)	{

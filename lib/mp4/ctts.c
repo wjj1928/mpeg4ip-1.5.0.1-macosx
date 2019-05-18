@@ -94,11 +94,11 @@ int quicktime_write_ctts(quicktime_t *file, quicktime_ctts_t *ctts)
 	quicktime_atom_t atom;
 
 	if (!file->use_mp4) {
-		return;
+		return 0;
 	}
 
 	if (ctts->total_entries == 1 && ctts->table[0].sample_offset == 0) {
-		return;
+		return 0;
 	}
 
 	quicktime_atom_write_header(file, &atom, "ctts");
@@ -111,6 +111,7 @@ int quicktime_write_ctts(quicktime_t *file, quicktime_ctts_t *ctts)
 		quicktime_write_int32(file, ctts->table[i].sample_offset);
 	}
 	quicktime_atom_write_footer(file, &atom);
+    return 0;
 }
 
 int quicktime_update_ctts(quicktime_ctts_t *ctts, long sample_offset)

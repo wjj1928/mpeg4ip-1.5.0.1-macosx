@@ -42,8 +42,8 @@ Revision History:
 
 *************************************************************************/
 
-#include <fstream.h>
-#include <iostream.h>
+#include <fstream>
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include "typeapi.h"
@@ -59,6 +59,8 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 
 #define new DEBUG_NEW				   
 #endif // __MFC_
+UInt getbit (UInt data, UInt position, UInt num);
+Void print_bit (UInt x, UInt num, UInt startPos);
 
 UInt getbit (UInt data, UInt position, UInt num) // get the num-bit field of x starting from position p
 {
@@ -211,7 +213,7 @@ Void COutBitStream::putBits (Int data, UInt numBits, const Char* rgchSymbolName)
 		m_pstrmTrace->fill (' ');
 		(*m_pstrmTrace) << " @" << m_lCounter << '\n';
 		m_pstrmTrace->flush ();
-		delete rgchBinaryForm;
+		delete[] rgchBinaryForm;
 	}
 #endif // __TRACE_AND_STATS_
 

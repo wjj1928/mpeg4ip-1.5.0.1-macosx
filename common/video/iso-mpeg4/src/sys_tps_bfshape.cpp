@@ -80,6 +80,21 @@ Int QMatrix [BLOCK_SQUARE_SIZE] = {
 	16, 16, 16, 16, 16, 16, 16, 16
 };
 
+Void set_modes(VOLMode* volmd, VOPMode* vopmd);
+Void pre_pad(PixelC *mask, PixelC *curr, int width, int height);
+Void pre_pad(PixelC *mask, PixelC *curr, int width, int height);
+Void convertSeg(const CVOPU8YUVBA* pvopcSrc, PixelC* destBY, PixelC* destBUV, Int width, Int height,
+		Int left, Int right, Int top, Int bottom);
+Void convertYuv(const CVOPU8YUVBA* pvopcSrc, PixelC* destY, PixelC* destU, PixelC* destV, Int width, Int height);
+Void inv_convertYuv(const CVOPU8YUVBA* pvopcSrc, PixelC* destY, PixelC* destU, PixelC* destV, Int width, Int height);
+Void bg_comp_each_mode3(PixelC* f_curr, PixelC* f_prev, PixelC* mask_curr, PixelC* mask_prev, Int curr_t, Int width, Int height, CRct rctCurr);
+Void bg_comp_each(PixelC* f_curr, PixelC* f_prev, PixelC* mask_curr, PixelC* mask_prev, Int curr_t, Int width, Int height, CRct rctCurr);
+Void bg_comp_each(PixelC* f_curr, PixelC* f_prev, PixelC* f_next, PixelC* mask_curr, PixelC* mask_prev, PixelC* mask_next, Int curr_t, Int prev_t, Int next_t, Int width, Int height, Int CoreMode);
+Void write_seg_test(Int num, char *name, PixelC* destY, Int width, Int height);
+Void write420_jnt_withMask(FILE *fp, PixelC* destY, PixelC* destU, PixelC* destV, PixelC* destBY, PixelC* destBUV, Int width, Int height);
+Void write420_jnt(FILE *fp, PixelC* destY, PixelC* destU, PixelC* destV, Int width, Int height);
+Void write420_sep(Int num, char *name, PixelC* destY, PixelC* destU, PixelC* destV, Int width, Int height);
+
 Void set_modes(VOLMode* volmd, VOPMode* vopmd) 
 {
     ///// set VOL modes
@@ -250,8 +265,8 @@ Void bg_comp_each(PixelC* f_curr, PixelC* f_prev, PixelC* f_next, PixelC* mask_c
       f_curr[i] = out_image[i];
 	} // added by Sharp (98/3/24)
 
-  delete out_image;
-  delete mask_overlap;
+  delete[] out_image;
+  delete[] mask_overlap;
 }
 
 //OBSS_SAIT_991015	//for OBSS partial enhancement mode
@@ -278,8 +293,8 @@ Void bg_comp_each(PixelC* f_curr, PixelC* f_prev, PixelC* mask_curr, PixelC* mas
 		mask_curr[i] = out_mask[i];
 	} 
 
-  delete out_image;
-  delete out_mask;
+  delete[] out_image;
+  delete[] out_mask;
 }
 //OBSSFIX_MODE3
 Void bg_comp_each_mode3(PixelC* f_curr, PixelC* f_prev, PixelC* mask_curr, PixelC* mask_prev, Int curr_t, Int width, Int height, CRct rctCurr)
@@ -305,8 +320,8 @@ Void bg_comp_each_mode3(PixelC* f_curr, PixelC* f_prev, PixelC* mask_curr, Pixel
 		mask_curr[i] = out_mask[i];
 	} 
 
-  delete out_image;
-  delete out_mask;
+  delete[] out_image;
+  delete[] out_mask;
 }
 //~OBSSFIX_MODE3
 //~OBSS_SAIT_991015

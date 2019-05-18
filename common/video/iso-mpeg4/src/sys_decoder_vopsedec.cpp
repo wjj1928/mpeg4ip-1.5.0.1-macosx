@@ -76,8 +76,8 @@ Revision History:
 
 *************************************************************************/
 #include <stdio.h>
-//#include <fstream.h>
-//#include <iostream.h>
+//#include <fstream>
+//#include <iostream>
 #ifdef __GNUC__
 //#include <strstream.h>
 #else
@@ -2636,23 +2636,23 @@ Void CVideoObjectDecoder::BackgroundComposition(char* argv[], Bool bScalability,
 #endif
 // end: added by Sharp (98/10/26)
 
-    delete currY;
-    delete currU;
-    delete currV;
-    delete currBY;
-    delete currBUV;
+    delete[] currY;
+    delete[] currU;
+    delete[] currV;
+    delete[] currBY;
+    delete[] currBUV;
 
-    delete prevY;
-    delete prevU;
-    delete prevV;
-    delete prevBY;
-    delete prevBUV;
+    delete[] prevY;
+    delete[] prevU;
+    delete[] prevV;
+    delete[] prevBY;
+    delete[] prevBUV;
 
-    delete nextY;
-    delete nextU;
-    delete nextV;
-    delete nextBY;
-    delete nextBUV;
+    delete[] nextY;
+    delete[] nextU;
+    delete[] nextV;
+    delete[] nextBY;
+    delete[] nextBUV;
 }
 
 //OBSS_SAIT_991015		//for OBSS partial enhancement mode
@@ -2816,21 +2816,21 @@ Bool CVideoObjectDecoder::BackgroundCompositionSS(Int width, Int height, FILE *p
     fwrite(currBY, sizeof (PixelC), width*height, pfSeg);
 #endif
 
-    delete currY;
-    delete currU;
-    delete currV;
-    delete currBY;
-    delete currBUV;
+    delete[] currY;
+    delete[] currU;
+    delete[] currV;
+    delete[] currBY;
+    delete[] currBUV;
 //OBSSFIX_MODE3
-	delete currBUV_tmp;
+	delete[] currBUV_tmp;
 	delete pvopcUpSampled;
 //~OBSSFIX_MODE3
 
-    delete prevY;
-    delete prevU;
-    delete prevV;
-    delete prevBY;
-    delete prevBUV;
+    delete[] prevY;
+    delete[] prevU;
+    delete[] prevV;
+    delete[] prevBY;
+    delete[] prevBUV;
 
 	return TRUE;
 }

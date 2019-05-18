@@ -39,9 +39,13 @@ Revision History:
 #ifndef __ENTROPY_HPP_
 #define __ENTROPY_HPP_
 
+#ifdef __cplus
 #include <istream.h>
 #include <ostream.h>
-
+#else
+#include <iostream>
+#endif
+using namespace std;
 class CInBitStream;
 class COutBitStream;
 

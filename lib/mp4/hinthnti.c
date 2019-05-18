@@ -58,7 +58,7 @@ int quicktime_write_hint_hnti(quicktime_t *file, quicktime_hint_hnti_t *hnti)
 	quicktime_atom_t atom;
 
 	if (hnti->sdp.string == NULL) {
-		return;
+		return 0;
 	}
 
 	quicktime_atom_write_header(file, &atom, "hnti");

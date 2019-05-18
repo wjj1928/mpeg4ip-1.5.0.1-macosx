@@ -107,7 +107,7 @@ Void CVideoObjectPlane::copyConstruct (const CVideoObjectPlane& vop, CRct r)
 
 Void CVideoObjectPlane::swap (CVideoObjectPlane& vop) 
 {
-	assert (this && &vop);
+	assert (&vop);
 	CRct rcT = vop.m_rc; 
 	vop.m_rc = m_rc; 
 	m_rc = rcT; 

@@ -114,7 +114,7 @@ Void CIntImage::copyConstruct (const CIntImage& ii, const CRct& rct)
 
 Void CIntImage::swap (CIntImage& ii) 
 {
-	assert (this && &ii);
+	assert ( &ii);
 	CRct rcT = ii.m_rc; 
 	ii.m_rc = m_rc; 
 	m_rc = rcT; 
@@ -1268,7 +1268,7 @@ Double CIntImage::snr (const CIntImage& iiCompare, const CIntImage& iiMsk) const
 {
 	CIntImage* piiMskOp = NULL;
 	Double msError = 0;
-	if (&iiMsk == NULL) {
+	if (false) {
 		piiMskOp = new CIntImage (where (), (PixelI) opaqueValue);		
 		msError = mse (iiCompare, *piiMskOp);
 		delete piiMskOp;

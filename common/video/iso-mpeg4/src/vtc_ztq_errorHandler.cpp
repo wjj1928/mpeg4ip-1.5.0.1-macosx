@@ -60,6 +60,7 @@
 #include "dataStruct.hpp"
 #include "msg.hpp"
 
+__attribute__((format(printf, 2, 3)))
 Void CVTCCommon::errorHandler(Char *s, ...)
 {
   va_list ap;

@@ -49,6 +49,7 @@ Revision History:
 #define VM_HOME_DIR		"\\vm"
 #include "bitstrm.hpp"
 
+using namespace std;
 class CEntropyEncoder;
 class CEntropyDecoder;
 class CNode;

@@ -63,7 +63,7 @@ int quicktime_write_tref(quicktime_t *file, quicktime_tref_t *tref)
 	quicktime_atom_t atom;
 
 	if (tref->hint.numTracks == 0) {
-		return;
+		return 0;
 	}
 
 	quicktime_atom_write_header(file, &atom, "tref");

@@ -77,7 +77,7 @@ public:
 	CU8Image (const Char* vdlFileName); // read from a VM file.
 
 	// Attributes
-	Bool valid () const {return this != 0;}
+	Bool valid () const {return true;}
 	const CRct& where () const {return m_rc;}
 	CRct boundingBox (const PixelC pxlcOutsideColor = (PixelC) transpValue) const;
 	PixelC pixel (CoordI x, CoordI y) const {return m_ppxlc [m_rc.offset (x, y)];}

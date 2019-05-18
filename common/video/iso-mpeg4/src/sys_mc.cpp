@@ -345,7 +345,7 @@ Void CVideoObject::motionCompMB (
 	  {
 		  blkX = x + BLOCK_SIZE;
 		  blkY = y + BLOCK_SIZE;
-		  if (pmbmd->m_rgTranspStatus [Y_BLOCK1] != ALL)
+		  if (pmbmd->m_rgTranspStatus [Y_BLOCK1] != ALL) {
 			  if (m_volmd.bQuarterSample) // Quarter sample
 				  motionCompQuarterSample (ppxlcPredMB, ppxlcRefLeftTop, BLOCK_SIZE,
 										   x * 4 + 2 * pmv8->iMVX + pmv8->iHalfX, 
@@ -360,8 +360,9 @@ Void CVideoObject::motionCompMB (
 							  m_vopmd.iRoundingControl,
 							  prctMVLimit
 							  );
+          }
 		  pmv8++;
-		  if (pmbmd->m_rgTranspStatus [Y_BLOCK2] != ALL)
+		  if (pmbmd->m_rgTranspStatus [Y_BLOCK2] != ALL) {
 			  if (m_volmd.bQuarterSample) // Quarter sample
 				  motionCompQuarterSample (ppxlcPredMB + OFFSET_BLK1, 
 										   ppxlcRefLeftTop, BLOCK_SIZE,
@@ -377,8 +378,9 @@ Void CVideoObject::motionCompMB (
 							  m_vopmd.iRoundingControl,
 							  prctMVLimit
 							  );
+          }
 		  pmv8++;
-		  if (pmbmd->m_rgTranspStatus [Y_BLOCK3] != ALL)
+		  if (pmbmd->m_rgTranspStatus [Y_BLOCK3] != ALL) {
 			  if (m_volmd.bQuarterSample) // Quarter sample
 				  motionCompQuarterSample (ppxlcPredMB + OFFSET_BLK2, 
 										   ppxlcRefLeftTop, BLOCK_SIZE,
@@ -394,8 +396,9 @@ Void CVideoObject::motionCompMB (
 							  m_vopmd.iRoundingControl,
 							  prctMVLimit
 							  );
+          }
 		  pmv8++;
-		  if (pmbmd->m_rgTranspStatus [Y_BLOCK4] != ALL)
+		  if (pmbmd->m_rgTranspStatus [Y_BLOCK4] != ALL) {
 			  if (m_volmd.bQuarterSample) // Quarter sample
 				  motionCompQuarterSample (ppxlcPredMB + OFFSET_BLK3, 
 										   ppxlcRefLeftTop, BLOCK_SIZE,
@@ -411,6 +414,7 @@ Void CVideoObject::motionCompMB (
 							  m_vopmd.iRoundingControl,
 							  prctMVLimit
 							  );
+          }
 	  }
 //      CoordI blkX = x + BLOCK_SIZE;
 //	    CoordI blkY = y + BLOCK_SIZE;

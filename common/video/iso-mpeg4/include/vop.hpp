@@ -65,7 +65,7 @@ public:
 	CVideoObjectPlane (const Char* vdlFileName); // load from a vdl stream
 
 	// Attributes
-	Bool valid () const {return this != 0;}
+	Bool valid () const {return true;}
 	CRct where () const {return m_rc;}
 	CPixel pixel (CoordI x, CoordI y) const {return m_ppxl [m_rc.offset (x, y)];}
 	CPixel pixel (CoordI x, CoordI y, UInt accuracy) const; 

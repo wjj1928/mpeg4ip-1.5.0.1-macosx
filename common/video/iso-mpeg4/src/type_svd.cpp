@@ -52,6 +52,9 @@ static char BASED_CODE THIS_FILE[] = __FILE__;
 
 #define irowNull		(-1)
 
+Int FSolveLinEq(Double *rgcoeff, Double *rgrhs, Int crow);
+Double* linearLS (Double** Ain, Double* b, UInt n_row, UInt n_col);
+
 __inline static void SwapRow(Double *rgcoeff, Double *rgrhs, Int crow,
 	Int irow1, Int irow2);
 __inline static void EliminateColumn(Double *rgcoeff, Double *rgrhs, Int crow,

@@ -60,7 +60,7 @@ public:
 	CVOPIntYUVBA (AlphaUsage fAUsage = RECTANGLE);
 
 	// Attributes
-	Bool valid () const {return this != 0;}
+	Bool valid () const {return true;} //debugme
 	const CRct& whereY () const {return m_piiY -> where ();}
 	const CRct& whereUV () const {return m_piiU -> where ();}
 	const CIntImage* getPlane (PlaneType plnType) const;

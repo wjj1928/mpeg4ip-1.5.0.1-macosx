@@ -689,7 +689,7 @@ Bool CVideoObject::SptPieceMB_NOT_HOLE(Int iMBXoffset, Int iMBYoffset, CMBMode* 
 
 		IntraPredDirection* Spreddir = m_rgmbmdSpt[iMBY][iMBX1].m_preddir;
 		IntraPredDirection* preddir = (*pmbmdLeft).m_preddir;	
-		if (iMBXoffset >0 ) 
+		if (iMBXoffset >0 )  {
 			if( m_ppPieceMBstatus[iMBY][iMBX1] == NOT_DONE)
 			{
 				m_ppPieceMBstatus[iMBY][iMBX1] = PIECE_DONE;
@@ -701,6 +701,7 @@ Bool CVideoObject::SptPieceMB_NOT_HOLE(Int iMBXoffset, Int iMBYoffset, CMBMode* 
 				*pmbmdLeft = CMBMode (m_rgmbmdSpt[iMBY][iMBX1]);
 				memcpy (preddir, Spreddir, 10  * sizeof (IntraPredDirection));
 			}
+        }
 // dshu: begin of modification
 		if ( iMBX < (m_rctSptQ.width / MB_SIZE))	  
 // dshu: end of modification

@@ -99,12 +99,12 @@ int quicktime_write_udta(quicktime_t *file, quicktime_udta_t *udta)
 	if (file->use_mp4) {
 		if (udta->copyright_len == 0
 		  && udta->hnti.rtp.string == NULL) {
-			return;
+			return 0;
 		}
 	} else {
 		if (udta->copyright_len + udta->name_len + udta->info_len == 0
 		  && udta->hnti.rtp.string == NULL) {
-			return;
+			return 0;
 		}
 	}
 
